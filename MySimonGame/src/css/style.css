@@ -17,11 +17,6 @@ body{
     align-items: center;
 }
 
-.main-title{
-    font-size: 5rem;
-    margin:  5%;
-}
-
 .game-board{
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -35,6 +30,11 @@ body{
     height: 200px;
     border: 10px solid black;
     border-radius: 20%;
+}
+
+#main-title{
+    font-size: 5rem;
+    margin:  5%;
 }
 
 
