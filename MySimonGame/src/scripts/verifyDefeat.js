@@ -1,6 +1,6 @@
-export function verifyDefeat(humanPlays,padsTrail) {
-    for (let i = 0; i < padsTrail.length; i++) {
-        if (padsTrail[i] !== humanPlays[i]){
+export function verifyDefeat(currentPlays,padsTrail) {
+    for (let i = 0; i < currentPlays.length; i++) {
+        if (padsTrail[i] !== currentPlays[i]){
             return true;   
         }
     }
