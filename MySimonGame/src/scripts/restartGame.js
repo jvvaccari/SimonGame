@@ -1,6 +1,6 @@
-function restartGame(){
-    humanPlays.length = 0;
+export function restartGame(){
+    currentPlays = [];
+    padsTrail = [];
     j = 0;
     console.log('Defeat!');
-    defeat = true;
 }

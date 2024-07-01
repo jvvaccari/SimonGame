@@ -1,5 +1,6 @@
 import { trailMaker,padsTrail } from './trailMaker.js';
 import { verifyDefeat } from './verifyDefeat.js';
+import { restartGame } from './restartGame.js';
 
 let currentPlays = [];
 let j = 0;
@@ -9,9 +10,13 @@ function selectedPad(){
         console.log(`The pad ${$('.pads').index(this)} has been clicked`);
         $(this).animate({opacity: 0.5}).animate({opacity: 1});
         currentPlays[j] = $('.pads').index(this);
-        console.log(verifyDefeat(currentPlays,padsTrail));
         j++;
-        console.log(currentPlays);
+        if(verifyDefeat(currentPlays,padsTrail)){
+            // restartGame();
+            // emptyTrail();
+            console.log('defeat');
+        };
+        console.log('Current plays:', currentPlays);
     }else{
         trailMaker();
         currentPlays = [];
