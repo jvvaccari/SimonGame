@@ -5,7 +5,7 @@ export function verifyDefeat(currentPlays,padsTrail) {
             $('body').css('background-color', 'red');
             setTimeout(()=>{
                 $('body').css('background-color', '#011F3F');
-            },1000);
+            },250);
             return true;  
         }
     }
