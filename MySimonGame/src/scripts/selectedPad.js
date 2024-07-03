@@ -6,24 +6,18 @@ let currentPlays = [];
 let j = 0;
 
 function selectedPad(){
-    if(!verifyDefeat(currentPlays,padsTrail)){
-        if(currentPlays.length < padsTrail.length - 1){
-            $(this).animate({opacity: 0.5}).animate({opacity: 1});
-            currentPlays[j] = $('.pads').index(this);
-            j++;
-        }else {
-            $(this).animate({opacity: 0.7}).animate({opacity: 1});
-            currentPlays[j] = $('.pads').index(this);
-            trailMaker();
-            currentPlays = [];
-            j = 0;
-        }
+    if(currentPlays.length + 1 < padsTrail.length){
+        $(this).animate({opacity: 0.5}).animate({opacity: 1});
+        currentPlays[j] = $('.pads').index(this);
+        j++;
+        verifyDefeat(currentPlays,padsTrail);
     }else{
-        $('#main-title').text(`Game Over, Press Any Key to Restart`);
-        $('body').css('background-color', 'red');
-        setTimeout(()=>{
-            $('body').css('background-color', '#011F3F');
-        },1000);
+        $(this).animate({opacity: 0.7}).animate({opacity: 1});
+        currentPlays[j] = $('.pads').index(this);
+        trailMaker();
+        currentPlays = [];
+        j = 0;
+        verifyDefeat(currentPlays,padsTrail);
     }
 }
 
