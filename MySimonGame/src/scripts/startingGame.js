@@ -1,4 +1,4 @@
-import { trailMaker } from './trailMaker.js';
+import { trailMaker,padsTrail } from './trailMaker.js';
 import { selectedPad } from './selectedPad.js';
 
 let start = true;
@@ -14,8 +14,11 @@ $(document).ready(() => {
                     $($('.pads')[i]).on('click',selectedPad);
                 }
             });
+        }else{
+            start = true;
+            trailMaker();
         }
-    });
-    
+    });   
+
 });
 
