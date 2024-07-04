@@ -1,14 +1,13 @@
 import { verifyDefeat } from './verifyDefeat.js';
 import { currentPlays } from './selectedPad.js';
 
-
 let padsTrail = [];
 let j = 0;
 let k = 0;
 
-
 function animatedTrailPad(index,delay){
-    
+    console.log(padsTrail);
+    console.log(currentPlays);
     setTimeout(()=>{
         $($('.pads')).eq(index).animate({opacity: 0.5}).animate({opacity: 1});
         padSound(index);
@@ -18,7 +17,7 @@ function animatedTrailPad(index,delay){
 function selectedTrailPad(randomPad) {
     let delay = 1000;
     padsTrail[j] = randomPad;
-    console.log(padsTrail);
+    
     for(let i = 0;i < padsTrail.length ;i++){ 
         console.log(padsTrail[i])
         animatedTrailPad(padsTrail[i],delay);
@@ -45,8 +44,11 @@ function trailMaker() {
 }
 
 function padSound(randomPad){
-    const audioElement = document.getElementById(`${getColorById(randomPad)}-sound`);
-    if(audioElement){
+
+    let audioElement = document.getElementById(`${getColorById(randomPad)}-sound`);
+    
+    if(audioElement.src === './src/sounds/wrong.mp3' || audioElement){
+        audioElement.src = `./src/sounds/${getColorById(randomPad)}.mp3`;
         audioElement.currentTime = 0; 
         audioElement.play();
     }else{

@@ -1,24 +1,41 @@
-import { trailMaker,padsTrail } from './trailMaker.js';
+import { trailMaker } from './trailMaker.js';
 import { selectedPad } from './selectedPad.js';
 
-let start = true;
+let start = false;
+let restart = false;
 
 $(document).ready(() => {
-
     $(document).on('keydown', (event) => {   
-        if(event.key === 'a' && start) {
-           trailMaker();
-           start = false;
-           $(document).ready(() => { 
-                for(let i = 0;i < $('.pads').length;i++){
-                    $($('.pads')[i]).on('click',selectedPad);
-                }
-            });
-        }else{
+        if(restart && !start){ 
             start = true;
-            trailMaker();
+            restart = false;
         }
-    });   
-
+        if (event.key === 'a' && !start) {
+            startGame();
+        } else if(start && !restart){
+            restartGame();
+        }
+    });  
 });
+
+function startGame() {
+    trailMaker();
+    attachPadClickHandlers();
+    start = true;
+}
+
+function restartGame() {
+    trailMaker();
+    restart = true;
+    start = false;
+}
+
+
+function attachPadClickHandlers() {
+    for(let i = 0;i < $('.pads').length;i++){
+        $($('.pads')[i]).on('click',selectedPad);
+    }
+}
+
+
 
